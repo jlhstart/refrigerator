@@ -39,4 +39,27 @@ public class ContentController {
 
 
 
+    /**
+     * 取出食材
+     * @param storeId
+     * @param amount
+     * @return
+     */
+    @DeleteMapping("/food")
+    public String takeFood(int storeId,double amount){
+        return contentService.takeFood(storeId,amount);
+    }
+
+    /**
+     * 更改食材
+     * @param st
+     * @return
+     */
+    @PutMapping("/food")
+    public String updateFood(Storedtl st){
+        return contentService.updateFood(st);
+    }
+
+
+
 }
