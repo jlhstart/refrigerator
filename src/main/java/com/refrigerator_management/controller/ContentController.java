@@ -34,6 +34,7 @@ public class ContentController {
      */
     @PostMapping
     public boolean AddContent(Storedtl storedtl){
+        System.out.println('p');
         return contentService.AddContent(storedtl);
     }
 
