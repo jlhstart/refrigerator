@@ -24,9 +24,6 @@ public class ContentController {
      */
     @GetMapping("/content")
     public List<ContentShow> GetContentInfo(int refrigerator_id,int layer_id){
-        System.out.println('y');
-        int i=0;
-        System.out.println(i);
         return contentService.GetContent(refrigerator_id,layer_id);
     }
 
