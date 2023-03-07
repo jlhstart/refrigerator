@@ -26,7 +26,6 @@ public class ContentController {
     public List<ContentShow> GetContentInfo(int refrigerator_id,int layer_id){
         System.out.println('y');
         return contentService.GetContent(refrigerator_id,layer_id);
-        int i=0;
     }
 
     /**
