@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-/**
- * 冰箱管理
- */
 @RestController
+@RequestMapping("/refrigerator")
 public class RefrigeratorController {
     @Autowired
     public RefrigeratorService refrigeratorService;
@@ -19,19 +17,15 @@ public class RefrigeratorController {
     @Autowired
     public ContentService contentService;
 
-    @GetMapping("/refrigerator")
-    public List<Refrigerator> GetRefrigerators(@CookieValue String userid){
-        return refrigeratorService.GetRefrigerators(Integer.parseInt(userid));
+    @GetMapping
+    public List<Refrigerator> GetRefrigerators(@CookieValue String userId){
+        System.out.println(userId);
+        return refrigeratorService.GetRefrigerators(Integer.parseInt(userId));
     }
 
-    /**
-     * 获取冰箱具体信息
-     * @param brandid
-     * @return
-     */
-    @PostMapping("/refrigerator")
-    public BrandModel GetBrand(Integer brandid){
-        return refrigeratorService.GetBrand(brandid);
+    @PostMapping
+    public BrandModel GetBrand(Integer brandId){
+        return refrigeratorService.GetBrand(brandId);
     }
 
 }

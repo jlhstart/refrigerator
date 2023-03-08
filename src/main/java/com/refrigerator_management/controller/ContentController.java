@@ -1,63 +1,36 @@
 package com.refrigerator_management.controller;
 
 import com.refrigerator_management.entity.ContentShow;
-import com.refrigerator_management.entity.Storedtl;
+import com.refrigerator_management.entity.Save;
 import com.refrigerator_management.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-/**
- * 食材管理
- */
 @RestController
+@RequestMapping("/content")
 public class ContentController {
     @Autowired
     public ContentService contentService;
 
-    /**
-     * 获取食材信息
-     * @param refrigerator_id
-     * @param layer_id
-     * @return
-     */
-    @GetMapping("/content")
-    public List<ContentShow> GetContentInfo(int refrigerator_id,int layer_id){
-        return contentService.GetContent(refrigerator_id,layer_id);
+    @GetMapping
+    public List<ContentShow> GetContentInfo(int refrigeratorId,int layerId){
+        return contentService.GetContent(refrigeratorId,layerId);
     }
 
-    /**
-     * 增加食材
-     * @param storedtl
-     * @return
-     */
-    @PostMapping("/content")
-    public boolean AddContent(Storedtl storedtl){
-        return contentService.AddContent(storedtl);
+    @PostMapping
+    public boolean AddContent(Save save){
+        return contentService.AddContent(save);
+    }
+    
+    @DeleteMapping
+    public String takeFood(int saveId,double amount){
+        return contentService.takeFood(saveId,amount);
     }
 
-
-
-    /**
-     * 取出食材
-     * @param storeId
-     * @param amount
-     * @return
-     */
-    @DeleteMapping("/food")
-    public String takeFood(int storeId,double amount){
-        return contentService.takeFood(storeId,amount);
-    }
-
-    /**
-     * 更改食材
-     * @param st
-     * @return
-     */
-    @PutMapping("/food")
-    public String updateFood(Storedtl st){
-        return contentService.updateFood(st);
+    @PutMapping
+    public String updateFood(Save save){
+        return contentService.updateFood(save);
     }
 
 
