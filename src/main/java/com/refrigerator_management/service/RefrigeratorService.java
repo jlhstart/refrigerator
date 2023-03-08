@@ -13,7 +13,6 @@ import java.util.List;
 public class RefrigeratorService {
     @Autowired
     private RefrigeratorDao refrigeratorDao;
-
     @Autowired
     private BrandModelDao brandModelDao;
 

@@ -2,7 +2,7 @@ package com.refrigerator_management.controller;
 
 import com.refrigerator_management.entity.ContentShow;
 import com.refrigerator_management.entity.Result;
-import com.refrigerator_management.entity.Save;
+import com.refrigerator_management.entity.Stored;
 import com.refrigerator_management.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +22,8 @@ public class ContentController {
     }
 
     @PostMapping
-    public Result AddContent(Save save){
-        if(contentService.AddContent(save)) return new Result(200);
+    public Result AddContent(Stored stored){
+        if(contentService.AddContent(stored)) return new Result(200);
         else return new  Result(404);
     }
     
@@ -34,8 +34,8 @@ public class ContentController {
     }
 
     @PutMapping
-    public Result updateFood(Save save){
-        if(contentService.updateFood(save)) return new Result(200);
+    public Result updateFood(Stored stored){
+        if(contentService.updateFood(stored)) return new Result(200);
         else return new Result(404);
     }
 

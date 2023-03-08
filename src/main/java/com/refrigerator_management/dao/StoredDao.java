@@ -2,7 +2,7 @@ package com.refrigerator_management.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.refrigerator_management.entity.ContentShow;
-import com.refrigerator_management.entity.Save;
+import com.refrigerator_management.entity.Stored;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 @Mapper
-public interface SaveDao extends BaseMapper<Save> {
+public interface StoredDao extends BaseMapper<Stored> {
     @Select("Select save.*,content.name, content.image,refrigerator.temp_cooler," +
             "refrigerator.temp_preserve,refrigerator.temp_freezer from save," +
             "content,refrigerator WHERE save.content_id =" +
@@ -19,17 +19,17 @@ public interface SaveDao extends BaseMapper<Save> {
             " AND refrigerator.id=#{refrigeratorId} AND save.layer_id=#{layerId}")
     List<ContentShow> selectById(int refrigeratorId, int layerId);
 
-    @Insert("Insert into save values=(null,#{save.refrigeratorId},#{save.contentId},#{save.layerId}" +
-            ",#{save.amount},#{save.unit},#{save.dateStore},#{save.save}) ")
-    boolean AddContent(Save save);
+    @Insert("Insert into save values=(null,#{stored.refrigeratorId},#{stored.contentId},#{stored.layerId}" +
+            ",#{stored.amount},#{stored.unit},#{stored.dateStore},#{stored.dateExpired}) ")
+    boolean AddContent(Stored stored);
 
-    @Update("UPDATE save SET layer_id = #{save.layerId}," +
-            " amount = #{save.amount}, " +
-            "unit = #{save.unit}, " +
-            "date_store = #{save.dateStore}, " +
-            "date_expired = #{save.dateExpired}" +
-            " WHERE id = #{save.id}")
-    int updateFood(Save save);
+    @Update("UPDATE save SET layer_id = #{stored.layerId}," +
+            " amount = #{stored.amount}, " +
+            "unit = #{stored.unit}, " +
+            "date_store = #{stored.dateStore}, " +
+            "date_expired = #{stored.dateExpired}" +
+            " WHERE id = #{stored.id}")
+    int updateFood(Stored stored);
 
     @Update("UPDATE save SET amount = #{amount} WHERE id = #{id}")
     void minusFoodAmount(int id, double amount);

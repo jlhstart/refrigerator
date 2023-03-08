@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Save {
+public class Stored {
     private Integer id ;
     private Integer refrigeratorId ;
     private Integer contentId ;
