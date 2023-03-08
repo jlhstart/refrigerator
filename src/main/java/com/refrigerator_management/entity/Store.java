@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Stored {
+public class Store {
     private Integer id ;
     private Integer refrigeratorId ;
     private Integer contentId ;
