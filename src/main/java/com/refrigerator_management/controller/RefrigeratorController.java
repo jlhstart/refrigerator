@@ -1,11 +1,12 @@
 package com.refrigerator_management.controller;
 
-import com.refrigerator_management.entity.BrandModel;
 import com.refrigerator_management.entity.Refrigerator;
+import com.refrigerator_management.entity.Result;
 import com.refrigerator_management.service.ContentService;
 import com.refrigerator_management.service.RefrigeratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -18,14 +19,15 @@ public class RefrigeratorController {
     public ContentService contentService;
 
     @GetMapping
-    public List<Refrigerator> GetRefrigerators(@CookieValue String userId){
-        System.out.println(userId);
-        return refrigeratorService.GetRefrigerators(Integer.parseInt(userId));
+    public Result GetRefrigerators(@CookieValue String userId) {
+        List<Refrigerator> refrigerators = refrigeratorService.GetRefrigerators(Integer.parseInt(userId));
+        if (refrigerators.isEmpty()) return new Result(404);
+        else return new Result(200, refrigerators);
     }
 
     @PostMapping
-    public BrandModel GetBrand(Integer brandId){
-        return refrigeratorService.GetBrand(brandId);
+    public Result GetBrand(Integer brandId) {
+        return new Result(200, refrigeratorService.GetBrand(brandId));
     }
 
 }
