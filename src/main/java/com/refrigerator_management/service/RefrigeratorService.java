@@ -16,11 +16,11 @@ public class RefrigeratorService {
     @Autowired
     private BrandModelDao brandModelDao;
 
-    public List<Refrigerator> GetRefrigerators(int userId) {
+    public List<Refrigerator> getRefrigerators(int userId) {
         return refrigeratorDao.selectByUserId(userId);
     }
 
-    public BrandModel GetBrand(int brandId) {
+    public BrandModel getBrand(int brandId) {
         return brandModelDao.selectById(brandId);
     }
 
