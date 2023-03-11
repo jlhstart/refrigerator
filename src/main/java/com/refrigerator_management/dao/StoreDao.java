@@ -14,7 +14,7 @@ public interface StoreDao extends BaseMapper<Store> {
     @Select("Select * from store WHERE refrigerator_id = #{refrigeratorId} AND layer_id=#{layerId}")
     List<Store> selectByIds(int refrigeratorId, int layerId);
 
-    @Insert("Insert into store values=(null,#{refrigeratorId},#{contentId},#{layerId}" +
+    @Insert("Insert into store values(null,#{refrigeratorId},#{contentId},#{layerId}" +
             ",#{amount},#{unit},#{dateStore},#{dateExpired}) ")
     boolean addStore(Store store);
 

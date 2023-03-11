@@ -10,8 +10,12 @@ public class ContentService {
     @Autowired
     private ContentDao contentDao;
 
-    public Content getContent(int id){
+    public Content getContentById(int id){
         return contentDao.selectById(id);
+    }
+
+    public int getContentId(String name){
+        return contentDao.selectByName(name);
     }
 
 }

@@ -23,7 +23,7 @@ public class StoreController {
     private ContentService contentService;
 
     @GetMapping
-    public Result getContentInfo(int refrigeratorId, int layerId) {
+    public Result getContentInfo(Integer refrigeratorId, Integer layerId) {
         List<Store> stores = storeService.getStore(refrigeratorId, layerId);
         List<Map<String, Object>> contentShows = new ArrayList<>();
         for(int i=0;i<stores.size();i++){
@@ -36,7 +36,7 @@ public class StoreController {
             map.put("amount",stores.get(i).getAmount());
             map.put("unit",stores.get(i).getUnit());
             map.put("dateExpired",stores.get(i).getDateExpired());
-            Content content = contentService.getContent(contentId);
+            Content content = contentService.getContentById(contentId);
             map.put("name",content.getName());
             map.put("image",content.getImage());
             contentShows.add(map);
@@ -46,13 +46,15 @@ public class StoreController {
     }
 
     @PostMapping
-    public Result addContent(Store store) {
+    public Result addContent(Store store, String name) {
+        int contentId=contentService.getContentId(name);
+        store.setContentId(contentId);
         if (storeService.addStore(store)) return new Result(200);
         else return new Result(404);
     }
 
     @DeleteMapping
-    public Result takeContent(int saveId, double amount) {
+    public Result takeContent(Integer saveId, Double amount) {
         if (storeService.takeContent(saveId, amount)) return new Result(200);
         else return new Result(404);
     }
