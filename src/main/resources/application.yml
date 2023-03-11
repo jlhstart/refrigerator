@@ -5,10 +5,5 @@ spring:
     username: root
     password: 123456
 
-  jackson:
-    default-property-inclusion: ALWAYS
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd
-
 server:
   port: 8080
