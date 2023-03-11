@@ -1,6 +1,7 @@
 package com.refrigerator_management.entity;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
