@@ -14,10 +14,6 @@ public class Store {
     private Integer layerId ;
     private Double amount ;
     private String unit ;
-/*    @DateTimeFormat(pattern = "yyy-MM-dd")
-    @JsonFormat(pattern = "yyy-MM-dd")*/
     private Date dateStore ;
-/*    @DateTimeFormat(pattern = "yyy-MM-dd")
-    @JsonFormat(pattern = "yyy-MM-dd")*/
     private Date dateExpired;
 }
